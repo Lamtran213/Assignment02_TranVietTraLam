@@ -1,0 +1,30 @@
+﻿<Window x:Class="Assignment02_WPF.CandidateManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment02_WPF"
+        mc:Ignorable="d"
+        Title="CandidateManagement" Height="700" Width="800">
+    <Grid>
+        <Label Content="CANDIDATE MANAGEMENT" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.665,-0.068"/>
+        <TextBlock HorizontalAlignment="Left" Margin="97,107,0,0" TextWrapping="Wrap" Text="Candidate ID " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCandidateID" HorizontalAlignment="Left" Margin="203,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="97,160,0,0" TextWrapping="Wrap" Text="Fullname" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Margin="203,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="97,217,0,0" TextWrapping="Wrap" Text="Birthdate" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpBirthdate" HorizontalAlignment="Left" Margin="203,213,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="501,107,0,0" TextWrapping="Wrap" Text="Posting ID" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="501,160,0,0" TextWrapping="Wrap" Text="Profile URL" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProfileURL" HorizontalAlignment="Left" Margin="606,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="499,217,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="606,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Height="71"/>
+        <DataGrid x:Name="dtgCandidateProfile" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,324,0,195" SelectionChanged="dtgCandidateProfile_SelectionChanged"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="82,581,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="244,581,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="436,581,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="626,581,0,0" VerticalAlignment="Top" Click="btnClose_Click"/>
+        <ComboBox x:Name="cbxPostingID" HorizontalAlignment="Left" Margin="606,104,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>
