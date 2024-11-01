@@ -67,9 +67,92 @@ namespace Assignment02_WPF
             this.Close();
         }
 
-        private void cbxPostingID_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                CandidateProfile candidateProfile = new CandidateProfile();
+                if (candidateProfile != null)
+                {
+                    candidateProfile.CandidateId = txtCandidateID.Text;
+                    candidateProfile.Fullname = txtFullName.Text;
+                    candidateProfile.Birthday = dpBirthdate.SelectedDate;
+                    candidateProfile.ProfileShortDescription = txtDescription.Text;
+                    candidateProfile.ProfileUrl = txtProfileURL.Text;
+                    candidateProfile.PostingId = cbxPostingID.SelectedValue.ToString();
+                    bool isAdd = _profileServices.AddCandidateProfile(candidateProfile);
+                    if (isAdd)
+                    {
+                        MessageBox.Show("Candidate added successfully.");
+                        LoadProductList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
 
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txtCandidateID.Text.Length > 0)
+                {
+                    string candidateID = txtCandidateID.Text;
+                    if (_profileServices.DeleteCandidateProfile(candidateID))
+                    {
+                        MessageBox.Show("Candidate with ID: " + candidateID + " is deleted.");
+                        LoadProductList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail to delete with ID: " + candidateID + "for some reason!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txtCandidateID.Text.Length > 0)
+                {
+                    CandidateProfile candidateProfile = new CandidateProfile();
+                    candidateProfile.CandidateId = txtCandidateID.Text;
+                    candidateProfile.Fullname = txtFullName.Text;
+                    candidateProfile.Birthday = dpBirthdate.SelectedDate;
+                    candidateProfile.ProfileShortDescription = txtDescription.Text;
+                    candidateProfile.ProfileUrl = txtDescription.Text;
+                    candidateProfile.PostingId = cbxPostingID.SelectedValue.ToString();
+                    bool isUpdated = _profileServices.UpdateCandidateProfile(candidateProfile);
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Candidate with ID:" + candidateProfile.CandidateId + " is updated");
+                        LoadProductList() ;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot updated for some reason.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception:" + ex.Message);
+            }
+        }
+
+        private void btnJobPosting_Click(object sender, RoutedEventArgs e)
+        {
+            JobPostingWindow jobPostingWindow = new JobPostingWindow();
+            jobPostingWindow.ShowDialog();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment02_WPF"
         mc:Ignorable="d"
-        Title="JobPostingWindow" Height="450" Width="800">
+        Title="JobPostingWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Label Content="Job Posting Management" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="153,126,0,0" TextWrapping="Wrap" Text="Posting ID" VerticalAlignment="Top"/>
@@ -16,11 +16,11 @@
         <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="628,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="534,176,0,0" TextWrapping="Wrap" Text="Posted Date" VerticalAlignment="Top"/>
         <DatePicker x:Name="dpPostedDate" HorizontalAlignment="Left" Margin="628,172,0,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,217,0,75"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="109,386,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="241,386,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="419,386,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="598,386,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dtgJobPosting" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,217,0,75" SelectionChanged="DataGrid_SelectionChanged"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="109,386,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="241,386,0,0" VerticalAlignment="Top" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="419,386,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="598,386,0,0" VerticalAlignment="Top" Click="btnClose_Click"/>
 
     </Grid>
 </Window>
