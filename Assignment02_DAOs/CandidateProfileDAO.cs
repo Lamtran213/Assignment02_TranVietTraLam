@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Assignment02_DAOs
 {
@@ -97,10 +98,12 @@ namespace Assignment02_DAOs
             File.WriteAllLines(candidateProfilePath, lines);
         }
 
-        // CRUD Methods
-        // Create
         public bool AddCandidateProfile(CandidateProfile candidate)
         {
+            if (!Regex.IsMatch(candidate.CandidateId, @"^CANDIDATE\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'CANDIDATE' followed by 4 digits.");
+            }
             if (candidate != null)
             {
                 list.Add(candidate);
@@ -110,15 +113,17 @@ namespace Assignment02_DAOs
             return false;
         }
 
-        // Read
         public CandidateProfile GetCandidateById(string candidateId)
         {
             return list.SingleOrDefault(c => c.CandidateId == candidateId);
         }
 
-        // Update
         public bool UpdateCandidateProfile(CandidateProfile updatedCandidate)
         {
+            if (!Regex.IsMatch(updatedCandidate.CandidateId, @"^CANDIDATE\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'CANDIDATE' followed by 4 digits.");
+            }
             var candidate = GetCandidateById(updatedCandidate.CandidateId);
             if (candidate != null)
             {
@@ -133,7 +138,6 @@ namespace Assignment02_DAOs
             return false;
         }
 
-        // Delete
         public bool DeleteCandidateProfile(string candidateId)
         {
             var candidate = GetCandidateById(candidateId);
@@ -146,7 +150,6 @@ namespace Assignment02_DAOs
             return false;
         }
 
-        // Get All Candidates
         public List<CandidateProfile> GetAllCandidates()
         {
             List<CandidateProfile> candidates = new List<CandidateProfile>();

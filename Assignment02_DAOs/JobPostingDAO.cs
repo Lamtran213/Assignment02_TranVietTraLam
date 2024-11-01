@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Assignment02_DAOs
@@ -71,6 +72,10 @@ namespace Assignment02_DAOs
         }
         public bool AddJobPosting(JobPosting jobPosting)
         {
+            if (!Regex.IsMatch(jobPosting.PostingId, @"^P\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'P' followed by 4 digits.");
+            }
             if (jobPosting != null)
             {
                 jobPostingList.Add(jobPosting);
@@ -92,6 +97,10 @@ namespace Assignment02_DAOs
         }
         public bool UpdateJobPosting(JobPosting jobPostingUpdated)
         {
+            if (!Regex.IsMatch(jobPostingUpdated.PostingId, @"^P\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'P' followed by 4 digits.");
+            }
             var jobPosting = GetJobPostingByID(jobPostingUpdated.PostingId);
             if (jobPosting != null)
             {
