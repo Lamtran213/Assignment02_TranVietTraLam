@@ -23,18 +23,21 @@ namespace Assignment02_WPF
     public partial class CandidateManagement : Window
     {
         private readonly ICandidateProfileServices _profileServices;
+        private readonly IJobPostingServices _jobPostingServices;
         private int? roleID;
 
         public CandidateManagement(int? roleID)
         {
             InitializeComponent();
             _profileServices = new CandidateProfileServices();
+            _jobPostingServices = new JobPostingServices();
             this.roleID = roleID;
             LoadProductList();
         }
         public void LoadProductList()
         {
-            this.dtgCandidateProfile.ItemsSource = _profileServices.GetAllCandidates().Select(a => new { a.CandidateId, a.Fullname});
+            this.dtgCandidateProfile.ItemsSource = _profileServices.GetAllCandidates().Select(a => new { a.CandidateId, a.Fullname, a.Posting.JobPostingTitle });
+            this.cbxPostingID.ItemsSource = _jobPostingServices.GetJobPostings();
             this.cbxPostingID.DisplayMemberPath = "JobPostingTitle";
             this.cbxPostingID.SelectedValuePath = "PostingId";
         }
@@ -62,6 +65,11 @@ namespace Assignment02_WPF
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void cbxPostingID_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

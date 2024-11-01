@@ -69,13 +69,13 @@ namespace Assignment02_DAOs
                 foreach (var line in lines)
                 {
                     var data = line.Split('\t');
-                    if (data.Length >= 6 && DateTime.TryParse(data[2], out DateTime birthday))
+                    if (data.Length >= 6)
                     {
                         var candidateProfile = new CandidateProfile
                         {
                             CandidateId = data[0],
                             Fullname = data[1],
-                            Birthday = birthday,
+                            Birthday = DateTime.Parse(data[2]),
                             ProfileShortDescription = data[3],
                             ProfileUrl = data[4],
                             PostingId = data[5],
@@ -149,7 +149,20 @@ namespace Assignment02_DAOs
         // Get All Candidates
         public List<CandidateProfile> GetAllCandidates()
         {
-            return new List<CandidateProfile>(list);
+            List<CandidateProfile> candidates = new List<CandidateProfile>();
+            foreach (CandidateProfile candidate in list)
+            {
+                var postingLoaded = posting?.SingleOrDefault(p => p.PostingId == candidate.PostingId);
+                candidate.Posting = postingLoaded;
+
+                if (posting == null)
+                {
+                    Console.WriteLine($"No JobPosting found for CandidateId: {candidate.CandidateId} with PostingId: {candidate.PostingId}");
+                }
+
+                candidates.Add(candidate);
+            }
+            return candidates;
         }
     }
 }
