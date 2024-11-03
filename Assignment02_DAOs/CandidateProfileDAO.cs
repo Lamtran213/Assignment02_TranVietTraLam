@@ -104,11 +104,16 @@ namespace Assignment02_DAOs
             {
                 throw new ArgumentException("PostingId must have the format 'CANDIDATE' followed by 4 digits.");
             }
-            if (candidate != null)
+            var existingCandidate = GetCandidateById(candidate.CandidateId);
+            if (existingCandidate == null)
             {
                 list.Add(candidate);
                 SaveDataToFile();
                 return true;
+            }
+            else
+            {
+                Console.WriteLine("Error: Candidate ID is exist.");
             }
             return false;
         }
