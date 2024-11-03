@@ -1,0 +1,8 @@
+CANDIDATE0001	Alan Clinton	1990-09-01	Excellent communication skills with a commitment to understanding customer requirements as well as business objectives.	AlanClinton.PNG	P0002
+CANDIDATE0002	Ethelbert Harron	1993-04-16	Critical thinking skills and an analytical mind with strong problem-solving abilitiess.	EthelbertHarron.PDF	P0002
+CANDIDATE0003	Kenneth Paul	1980-09-24	Highly experienced with various operating systems and databases	KennethPaul.PDF	P0002
+CANDIDATE0004	Michael Leonard	1995-12-30	Proven ability to troubleshoot hardware, software, and network issues quickly and effectively.	MichaelLeonard.PDF	P0002
+CANDIDATE0005	William Peter	1991-06-28	Problem solving skills to revise existing systems and suggest improvements.	WilliamPeter.PDF	P0003
+CANDIDATE0006	Edward David Clinton	1990-07-13	Patience and ability to train users in both new and existing IT systems.	EdwardDavidClinton.PDF	P0004
+CANDIDATE0007	Harvey Louis	1991-09-01	Enthusiastic about working collaboratively.	Harvey Louis.PDF	P0005
+CANDIDATE0008	Harvey Louis	1991-09-01	Enthusiastic about working collaboratively.	Harvey Louis.PDF	P0005
